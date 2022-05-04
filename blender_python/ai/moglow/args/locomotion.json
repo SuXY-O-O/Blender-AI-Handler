@@ -1,0 +1,65 @@
+{
+  "Dir": {
+    "data_root": "data/locomotion",
+    "log_root": "results/locomotion"
+  },
+  "Glow": {
+    "hidden_channels": 512,
+    "K": 16,
+    "actnorm_scale": 1.0,
+    "flow_permutation": "invconv",
+    "flow_coupling": "affine",
+    "network_model": "LSTM",
+    "num_layers": 2,
+    "LU_decomposed": true,
+    "distribution": "normal"
+  },
+  "Data": {
+    "framerate": 20,
+    "seqlen": 8,
+    "n_lookahead": 0,
+    "dropout": 0.7,
+    "mirror": true,
+    "reverse_time": true
+  },
+  "Optim": {
+    "name": "adam",
+    "args": {
+      "lr": 0.001,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08
+    },
+    "Schedule": {
+      "name": "noam_learning_rate_decay",
+      "args": {
+        "warmup_steps": 1000,
+        "minimum": 0.0001
+      }
+    }
+  },
+  "Device": {
+    "glow": [
+      "cuda:0"
+    ],
+    "data": "cuda:0"
+  },
+  "Train": {
+    "batch_size": 1,
+    "num_batches": 80000,
+    "max_grad_clip": 5,
+    "max_grad_norm": 100,
+    "max_checkpoints": 2,
+    "checkpoints_gap": 4000,
+    "num_plot_samples": 1,
+    "scalar_log_gap": 50,
+    "validation_log_gap": 200,
+    "plot_gap": 20000,
+    "warm_start": ""
+  },
+  "Infer": {
+    "pre_trained": "/home/suxy/Documents/BiYeSheJi/AI/StyleGestures-master/results/locomotion/trained.pkg"
+  }
+}

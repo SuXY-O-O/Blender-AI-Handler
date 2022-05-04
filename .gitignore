@@ -1,0 +1,9 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# IDEA
+.idea/
+
+# model arg
+blender_python/ai/moglow/args/trained.pkg
